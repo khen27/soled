@@ -1,7 +1,0 @@
-{
-  "name": "soled-dev",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
