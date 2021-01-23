@@ -1,5 +1,6 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, AfterViewInit, ViewChild, HostBinding, PLATFORM_ID, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { IonSlides, MenuController } from '@ionic/angular';
 
@@ -27,7 +28,9 @@ export class WalkthroughPage implements AfterViewInit {
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
-    public menu: MenuController
+    public menu: MenuController,
+    public router: Router
+
   ) { }
 
   // Disable side menu for this page
@@ -68,5 +71,10 @@ export class WalkthroughPage implements AfterViewInit {
     this.slides.length().then(length => {
       this.slides.slideTo(length);
     });
+  }
+
+  doGoogleSignup(): void {
+    console.log('google signup');
+    this.router.navigate(['app/categories']);
   }
 }
