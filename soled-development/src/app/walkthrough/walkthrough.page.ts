@@ -2,7 +2,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, AfterViewInit, ViewChild, HostBinding, PLATFORM_ID, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { IonSlides, MenuController } from '@ionic/angular';
+import { IonSlides, ModalController, MenuController, IonRouterOutlet } from '@ionic/angular';
+
+import { TermsOfServicePage } from '../terms-of-service/terms-of-service.page';
+import { PrivacyPolicyPage } from '../privacy-policy/privacy-policy.page';
 
 @Component({
   selector: 'app-walkthrough',
@@ -29,6 +32,8 @@ export class WalkthroughPage implements AfterViewInit {
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     public menu: MenuController,
+    public modalController: ModalController,
+    private routerOutlet: IonRouterOutlet,
     public router: Router
 
   ) { }
@@ -76,5 +81,23 @@ export class WalkthroughPage implements AfterViewInit {
   doGoogleSignup(): void {
     console.log('google signup');
     this.router.navigate(['app/categories']);
+  }
+
+  async showTermsModal() {
+    const modal = await this.modalController.create({
+      component: TermsOfServicePage,
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl
+    });
+    return await modal.present();
+  }
+
+  async showPrivacyModal() {
+    const modal = await this.modalController.create({
+      component: PrivacyPolicyPage,
+      swipeToClose: true,
+      presentingElement: this.routerOutlet.nativeEl
+    });
+    return await modal.present();
   }
 }
