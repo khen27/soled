@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1611646121771,
+  "timestamp": 1611649947720,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -11,8 +11,8 @@
         "ignoreVary": true
       },
       "urls": [
-        "/1-es2015.1be9ccfae12afe389ab0.js",
-        "/1-es5.1be9ccfae12afe389ab0.js",
+        "/1-es2015.fa4b5abedd97d50b2c4e.js",
+        "/1-es5.fa4b5abedd97d50b2c4e.js",
         "/100-es2015.9177bb72e11f91c5f058.js",
         "/100-es5.9177bb72e11f91c5f058.js",
         "/101-es2015.ebd44952c440d7f78cac.js",
@@ -97,8 +97,8 @@
         "/50-es5.204dcdabba4b75fba024.js",
         "/51-es2015.d129e5ceb5b711945855.js",
         "/51-es5.d129e5ceb5b711945855.js",
-        "/52-es2015.bd5a279b7d47d1df839a.js",
-        "/52-es5.bd5a279b7d47d1df839a.js",
+        "/52-es2015.8e67952162e7ebd4f278.js",
+        "/52-es5.8e67952162e7ebd4f278.js",
         "/53-es2015.6b40d857c2f933448be0.js",
         "/53-es5.6b40d857c2f933448be0.js",
         "/54-es2015.4a023a61126a97cb7856.js",
@@ -213,8 +213,8 @@
         "/polyfills-dom-es5.7a875dc2797ca112bbfe.js",
         "/polyfills-es2015.0d34f6f24935867fd0bc.js",
         "/polyfills-es5.dada5011f48bac7f723e.js",
-        "/runtime-es2015.a6012f43c119dcbf6692.js",
-        "/runtime-es5.a6012f43c119dcbf6692.js",
+        "/runtime-es2015.a226637b559041af57ec.js",
+        "/runtime-es5.a226637b559041af57ec.js",
         "/styles.06719c115c822f23213b.css"
       ],
       "patterns": []
@@ -410,6 +410,8 @@
         "/assets/sample-images/walkthrough/onboarding_one.png",
         "/assets/sample-images/walkthrough/onboarding_three.png",
         "/assets/sample-images/walkthrough/onboarding_two.png",
+        "/assets/sample-images/walkthrough/soled-logo-v2.png",
+        "/assets/sample-images/walkthrough/splashbackground.png",
         "/assets/sample-images/walkthrough/walkthrough-illustration-1.svg",
         "/assets/sample-images/walkthrough/walkthrough-illustration-2.svg",
         "/assets/sample-images/walkthrough/walkthrough-illustration-3.svg",
@@ -422,6 +424,7 @@
         "/assets/splash/splash-640x960.png",
         "/assets/splash/splash-750x1334.png",
         "/assets/splash/splash-768x1024.png",
+        "/assets/videos/.elephants_dream.mp4.icloud",
         "/assets/videos/big_buck_bunny.mp4"
       ],
       "patterns": []
@@ -429,8 +432,8 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/1-es2015.1be9ccfae12afe389ab0.js": "1750aa951907ee9ccaf7db955c8e3ec26ed8fab8",
-    "/1-es5.1be9ccfae12afe389ab0.js": "66225589cc2418f5174df18e299a5fb3ec5ab198",
+    "/1-es2015.fa4b5abedd97d50b2c4e.js": "e1a4c36e8dec8a931d88769781e75c748584dc5d",
+    "/1-es5.fa4b5abedd97d50b2c4e.js": "92a7909519d0a52016f30d46dd88394219c9c97f",
     "/100-es2015.9177bb72e11f91c5f058.js": "e629be9f6d0f0d8eaaa7e2eac69c66550619e287",
     "/100-es5.9177bb72e11f91c5f058.js": "b226fc4dbcaffa19fa20e4f7722359599dcc74e9",
     "/101-es2015.ebd44952c440d7f78cac.js": "346a00c3c4ffa4e2edbf0f26ed0162db301c2ed0",
@@ -515,8 +518,8 @@
     "/50-es5.204dcdabba4b75fba024.js": "da13b4a392bec6f892aa2d7715a4a50e293d52e4",
     "/51-es2015.d129e5ceb5b711945855.js": "e3f61008b562f5573d5b773ff60e30bea73f0bf1",
     "/51-es5.d129e5ceb5b711945855.js": "585c8a77761e3ac9283a6fb1f3bfbde94224a2a2",
-    "/52-es2015.bd5a279b7d47d1df839a.js": "cecfbc8cdd8cb31f9093e61a1847b8574f9ff857",
-    "/52-es5.bd5a279b7d47d1df839a.js": "05bca56b3dd1730fb43a2b2dadaaea9adede0364",
+    "/52-es2015.8e67952162e7ebd4f278.js": "341c7622a8adb1f46a6d3f37aaef4f76269a8aef",
+    "/52-es5.8e67952162e7ebd4f278.js": "06184b0506530f330725d956ff25c82d7fc1f969",
     "/53-es2015.6b40d857c2f933448be0.js": "627f39be7a83ed10f896947a2c04c84ec72f7e2a",
     "/53-es5.6b40d857c2f933448be0.js": "32d452480ed2a8352d54e3b11d429a578ffc3d6d",
     "/54-es2015.4a023a61126a97cb7856.js": "83f5b16b048968bbce0ad7dffcf6ed425ce7f6ad",
@@ -800,6 +803,8 @@
     "/assets/sample-images/walkthrough/onboarding_one.png": "ebb27d9561ef1510fafe2f118ede2139fdfbafdf",
     "/assets/sample-images/walkthrough/onboarding_three.png": "cd210d52b89b5bb97391818880ed3c177eef7df1",
     "/assets/sample-images/walkthrough/onboarding_two.png": "6884fb89f21c9b5acec84952ed4cfa3ec3022b51",
+    "/assets/sample-images/walkthrough/soled-logo-v2.png": "8e95b5df474a001028b4ba8a0f994c84dd15d717",
+    "/assets/sample-images/walkthrough/splashbackground.png": "a6be45119b5d63cdd2d1e4422c3ab036d6e0617e",
     "/assets/sample-images/walkthrough/walkthrough-illustration-1.svg": "0e25756be55d27ae205954592c7f8d5b5fc631de",
     "/assets/sample-images/walkthrough/walkthrough-illustration-2.svg": "e3453e2b2ffa0922ef11b7836fe5997b481a9be7",
     "/assets/sample-images/walkthrough/walkthrough-illustration-3.svg": "e033c6ea0d35239ff3b175df8268091cedcd97de",
@@ -812,10 +817,11 @@
     "/assets/splash/splash-640x960.png": "9befcfdabd39f6720179756e8b76d54eb987e7ac",
     "/assets/splash/splash-750x1334.png": "8e387eee779b03e69645d23817ecc2eeaa38fa3a",
     "/assets/splash/splash-768x1024.png": "eccd984a7060d54cd7852543c527e2da29e9825f",
+    "/assets/videos/.elephants_dream.mp4.icloud": "1eb46e71fde4f89b5e6b1324a4de069748192c93",
     "/assets/videos/big_buck_bunny.mp4": "17735b4721faa7d59e1fd8a2300135a3f04c9ea6",
     "/common-es2015.0f6afaf42196067ca107.js": "469ca8820b7024a19746b18207ec03af346e4008",
     "/common-es5.0f6afaf42196067ca107.js": "0f61bc187e6d1011bdd9a4161ee51cc33d7aba0d",
-    "/index.html": "2b3bff969f8f6c3bda483ce165f1b03875e48080",
+    "/index.html": "e2bcc3de57440c060c881487ab51b0b502b9d782",
     "/main-es2015.a1d73c0648dcfe2a0fb3.js": "1798bda7bd2953451ab70821fdd5a3453f2de6f7",
     "/main-es5.a1d73c0648dcfe2a0fb3.js": "26ac4a6a6f232c39d8a4b6a857e06461a34d8888",
     "/manifest.webmanifest": "fad3e46b3ed12efbe86d10c4746a3968ee1beaaa",
@@ -827,8 +833,8 @@
     "/polyfills-dom-es5.7a875dc2797ca112bbfe.js": "50b9fd061da9558245e5d0db727517f388afe77d",
     "/polyfills-es2015.0d34f6f24935867fd0bc.js": "0ecd780632f27d90c39838f30fe9ae5cc8041738",
     "/polyfills-es5.dada5011f48bac7f723e.js": "9638519d7b58ce13428e25de418bb77133ee36be",
-    "/runtime-es2015.a6012f43c119dcbf6692.js": "9c4c7c760fbaae9f56c7f03b62ec5013bb4ee2db",
-    "/runtime-es5.a6012f43c119dcbf6692.js": "02e309c3fbf76f5266293d0bad248bc47723def0",
+    "/runtime-es2015.a226637b559041af57ec.js": "4f3c160fc39f7b14026e245c68a562a87e492ad4",
+    "/runtime-es5.a226637b559041af57ec.js": "e7bbfb2043a3d21e0a7dc763c3b6bc459680af0f",
     "/styles.06719c115c822f23213b.css": "238ac1327e5dd54c116d52d36d5ecb1a677291a6"
   },
   "navigationUrls": [
