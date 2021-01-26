@@ -303,3 +303,11 @@ p b {
 .login{
   margin-top: 75px;
 }
+
+.splashScreen{
+  background-image: url('/./assets/sample-images/walkthrough/splashbackground.png');
+  height:100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
