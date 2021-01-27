@@ -9,4 +9,10 @@ import { Component } from '@angular/core';
     './styles/categories.responsive.scss'
   ]
 })
-export class CategoriesPage { }
+export class CategoriesPage { 
+  constructor(){}
+
+  slideOptions = {
+    slidesPerView: 1.5
+  };
+}

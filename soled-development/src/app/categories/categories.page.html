@@ -1,4 +1,114 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-item lines="none" slot="start">
+      <ion-avatar slot="start">
+        <img src="https://habib.al-mawali.com/wp-content/uploads/IMG_4838-1-768x768.jpg">
+      </ion-avatar>
+        <ion-label class="greeting">
+          <p>Hey Karl,</p>
+          <h3>Buy some more bids!</h3>
+        </ion-label>
+    </ion-item>
+    <ion-buttons slot="end">
+			<ion-button class="bordered"  color="dark">
+				<ion-icon  name="cart-outline" ></ion-icon>
+			</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+			<ion-button class="bordered" fill="solid" color="light">
+				<ion-icon  name="gift-outline" ></ion-icon>
+			</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <!--ion-item lines="none">
+  <ion-label lines="none">
+    <h2>Live Auctions</h2>
+  </ion-label>
+</ion-item-->
+</ion-header>
+
 <ion-content>
+
+  <div class="slides ion-margin-bottom">
+    <ion-slides [options]="slideOptions">
+			<ion-slide>
+				<ion-card>
+					<ion-card-header>
+						<div class="main">
+							<img src="./assets/sample-images/categories/ic-share.png">
+            </div>
+							<img class='files' src="./assets/sample-images/categories/Jordan_1_High_Dark_Mocha.png">
+					</ion-card-header>
+							<ion-card-content class="ion-text-left">
+								<ion-card-title class="ion-margin-bottom">Air Jordans </ion-card-title>
+								<ion-card-subtitle class="ion-text-right">5min</ion-card-subtitle>
+								<ion-progress-bar color="favorite" value="0.2"></ion-progress-bar>
+							</ion-card-content>
+				</ion-card>
+			</ion-slide>
+			<ion-slide>
+				<ion-card>
+					<ion-card-header>
+						<div class="main">
+							<img src="https://www.freeiconspng.com/uploads/google-drive-icon-18.png">
+            </div>
+							<img class='files' src="./assets/sample-images/categories/pink-nike.jpg">
+					</ion-card-header>
+							<ion-card-content class="ion-text-left">
+								<ion-card-title class="ion-margin-bottom">Pink Nikes </ion-card-title>
+								<ion-card-subtitle class="ion-text-right">1day</ion-card-subtitle>
+								<ion-progress-bar color="favorite" value="0.8"></ion-progress-bar>
+							</ion-card-content>
+				</ion-card>
+			</ion-slide>
+		</ion-slides>
+
+  </div>
+  
+  <div class="slides2 ion-no-border">
+    <ion-item lines="none">
+      <ion-label lines="none">
+        <h2>Past Auctions</h2>
+      </ion-label>
+    </ion-item>
+		<ion-slides [options]="slideOptions">
+			<ion-slide>
+				<ion-card>
+					<ion-card-header>
+						<div class="main">
+							<img src="https://cfl.dropboxstatic.com/static/images/logo_catalog/twitter-card-glyph_m1%402x.png">
+            </div>
+							<img class='files' src="https://i.ibb.co/jD8ypLq/files.jpg">
+					</ion-card-header>
+							<ion-card-content class="ion-text-left">
+								<ion-card-title class="ion-margin-bottom">Drop Box </ion-card-title>
+								<ion-card-subtitle class="ion-text-right">10/50GB</ion-card-subtitle>
+								<ion-progress-bar color="custom" value="0.5"></ion-progress-bar>
+							</ion-card-content>
+				</ion-card>
+			</ion-slide>
+
+			<ion-slide>
+				<ion-card>
+					<ion-card-header>
+						<div class="main">
+							<img src="https://www.freeiconspng.com/uploads/google-drive-icon-18.png">
+            </div>
+							<img class='files' src="https://i.ibb.co/jD8ypLq/files.jpg">
+					</ion-card-header>
+							<ion-card-content class="ion-text-left">
+								<ion-card-title class="ion-margin-bottom">Google Drive </ion-card-title>
+								<ion-card-subtitle class="ion-text-right">15/50GB</ion-card-subtitle>
+								<ion-progress-bar color="warning" value="0.2"></ion-progress-bar>
+							</ion-card-content>
+				</ion-card>
+			</ion-slide>
+		</ion-slides>
+	</div>
+  
+</ion-content>
+
+<!--ion-content>
   <ion-row class="categories-list">
     <ion-col class="category-item deals-category" size="12">
       <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="'./assets/sample-images/categories/RaffleBanner.png'">
@@ -25,4 +135,4 @@
     </ion-slide>
   </ion-slides>
   </ion-row>
-</ion-content>
+</ion-content-->
