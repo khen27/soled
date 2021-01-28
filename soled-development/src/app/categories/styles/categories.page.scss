@@ -191,6 +191,10 @@ ion-content {
     rgba(45, 112, 229, 1) 100%
   );
 
+  ion-toolbar{
+    padding: -20px -20px;
+   
+  }
 
   .slides {
     background: #f1f5f8;
@@ -206,6 +210,8 @@ ion-content {
         font-weight: 700;
         font-size: 16px;
       }
+      
+      
     }
     ion-progress-bar{
       color:inear-gradient(
@@ -214,6 +220,11 @@ ion-content {
         rgba(45, 112, 229, 1) 35%,
         rgba(45, 112, 229, 1) 100%
       );
+    }
+
+    .icon-shape {
+      --border-radius: 10px;
+      --box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
     }
   }
   .slides2 {
@@ -244,7 +255,7 @@ ion-content {
     width: 100%;
     box-shadow: 0px;
     border-radius: 14px;
-    padding: 14px;
+    padding: 4px;
     background: rgba(255, 255, 255, 1);
     // images for slides
     .main {
@@ -265,6 +276,25 @@ ion-content {
     }
     .files {
       padding-top: 14px;
+    }
+
+    ion-toolbar{
+      padding: 0;
+
+      h3 {
+        font-weight: 700;
+        font-size: 12px;
+        color: black;
+      }
+
+
+      .auction-data{
+        ion-label{
+          background:none;
+        }
+        
+
+      }
     }
   }
 
