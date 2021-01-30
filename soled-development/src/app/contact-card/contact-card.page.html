@@ -33,7 +33,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button icon="chevron-back" defaultHref="home"></ion-back-button>
+      <ion-back-button icon="chevron-back" defaultHref="app/categories"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -47,7 +47,7 @@
         <ion-row>
           <ion-col size="12" class="ion-text-center ion-margin-bottom">
             <ion-card-title>Karl Henderson</ion-card-title>
-            <ion-card-subtitle>100 Bids | 2 Purchases</ion-card-subtitle>
+            <ion-card-subtitle>10 Bids | 200 Points</ion-card-subtitle>
           </ion-col>
           <ion-col size="4" class="ion-text-center">
             <ion-button fill="clear" color="dark" routerLink="/details">
@@ -67,26 +67,29 @@
         </ion-row>
       </ion-card-content>
     </ion-card>
-    <h6>Select Dates</h6>
+    <h6>Email</h6>
     <ion-item lines="none">
-      <ion-icon name="calendar-outline" slot="start"></ion-icon>
+      <ion-icon name="mail-unread-outline" slot="start"></ion-icon>
       <ion-label>
-        <ion-datetime placeholder="23-07-2020" display-format="DD-MM-YYYY"></ion-datetime>
+        <ion-input placeholder="karl@appblitz.dev"></ion-input>
       </ion-label>
       <ion-icon name="chevron-forward" slot="end"></ion-icon>
     </ion-item>
     <h6>Address</h6>
     <ion-item lines="none">
-      <ion-icon name="home-outline" slot="start"></ion-icon>
+      <ion-icon name="location-outline" slot="start"></ion-icon>
       <ion-label>
         <ion-input placeholder="213 NE 8th"></ion-input>
       </ion-label>
       <ion-icon name="chevron-forward" slot="end"></ion-icon>
     </ion-item>
+    <h6>SoleD</h6>
+    <ion-item lines="none">
+      <ion-icon name="star-outline" slot="start"></ion-icon>
+      <ion-label>
+        <ion-input placeholder="Learn More"></ion-input>
+      </ion-label>
+      <ion-icon name="chevron-forward" slot="end"></ion-icon>
+    </ion-item>
   </div>
 </ion-content>
-<div class="ion-padding">
-  <ion-badge color="dark" mode="ios">
-    Habib Dev.
-  </ion-badge>
-</div>
