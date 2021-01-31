@@ -1,13 +1,123 @@
-<ion-header>
-  <ion-toolbar color="primary">
+<ion-header class="ion-no-border">
+  <img src="assets/i-flower-blob.png">
+  <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="app/categories"></ion-back-button>
+      <ion-button>
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
-    <ion-title> Store</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="basket-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+  <div class="titles">
+    <h4>Soled Store </h4>
+  </div>
 </ion-header>
+<ion-content fullscreen="true">
+  <div class="container">
+    <h4 class="ion-padding-horizontal">Shoes</h4>
+    <ion-slides [options]="slideOptions">
+      <ion-slide class="ion-text-left">
+        <ion-card class="ion-padding" color="success">
+          <ion-card-header>
+						<img class='files' src="./assets/sample-images/categories/Jordan_1_High_Dark_Mocha.png">
+					</ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="8">
+                <ion-card-title>Nikes</ion-card-title>
+                <ion-card-subtitle>$200 <del> $450</del></ion-card-subtitle>
+              </ion-col>
+              <ion-col size="4" class="ion-text-left">
+                <ion-button color="dark" mode="ios" routerLink="/details">
+                  <ion-icon slot="icon-only" name="add"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide class="ion-text-left">
+        <ion-card class="ion-padding" color="success">
+          <ion-card-header>
+						<img class='files' src="./assets/sample-images/categories/Jordan_1_High_Dark_Mocha.png">
+					</ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="8">
+                <ion-card-title>Nikes</ion-card-title>
+                <ion-card-subtitle>$200 <del> $450</del></ion-card-subtitle>
+              </ion-col>
+              <ion-col size="4" class="ion-text-left">
+                <ion-button color="dark" mode="ios" routerLink="/details">
+                  <ion-icon slot="icon-only" name="add"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="container">
+    <h4 class="ion-padding-horizontal">Shoes</h4>
+    <ion-slides [options]="slideOptions">
+      <ion-slide class="ion-text-left">
+        <ion-card class="ion-padding" color="success">
+          <ion-card-header>
+						<img class='files' src="./assets/sample-images/categories/Jordan_1_High_Dark_Mocha.png">
+					</ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="8">
+                <ion-card-title>Nikes</ion-card-title>
+                <ion-card-subtitle>$200 <del> $450</del></ion-card-subtitle>
+              </ion-col>
+              <ion-col size="4" class="ion-text-left">
+                <ion-button color="dark" mode="ios" routerLink="/details">
+                  <ion-icon slot="icon-only" name="add"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide class="ion-text-left">
+        <ion-card class="ion-padding" color="success">
+          <ion-card-header>
+						<img class='files' src="./assets/sample-images/categories/Jordan_1_High_Dark_Mocha.png">
+					</ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="8">
+                <ion-card-title>Nikes</ion-card-title>
+                <ion-card-subtitle>$200 <del> $450</del></ion-card-subtitle>
+              </ion-col>
+              <ion-col size="4" class="ion-text-left">
+                <ion-button color="dark" mode="ios" routerLink="/details">
+                  <ion-icon slot="icon-only" name="add"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>
 
-<ion-content class="fashion-listing-content">
+<!--ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="chevron-back" defaultHref="app/categories"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header-->
+
+<!--ion-content class="fashion-listing-content">
   <ng-container *ngIf="listing?.items">
     <ion-row class="items-row">
       <ion-col size="6" class="listing-item" *ngFor="let item of listing?.items">
@@ -48,4 +158,4 @@
       </ion-col>
     </ion-row>
   </ng-container>
-</ion-content>
+</ion-content-->

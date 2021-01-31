@@ -26,6 +26,10 @@ export class FashionListingPage implements OnInit {
 
   constructor(private route: ActivatedRoute) { }
 
+  slideOptions = {
+    slidesPerView: 1.5
+  };
+
   ngOnInit(): void {
     this.subscriptions = this.route.data
     .pipe(
