@@ -22,7 +22,12 @@ export class CategoriesPage {
   };
 
   launchProfilePage(): void {
-    console.log('launch profile page signup');
+    console.log('launch profile page');
     this.router.navigate(['app/contact-card']);
+  }
+
+  launchStorePage(): void {
+    console.log('launch store landing page');
+    this.router.navigate(['/app/categories/fashion']);
   }
 }
