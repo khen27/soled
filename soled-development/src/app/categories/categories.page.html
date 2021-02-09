@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-item lines="none" slot="start">
-      <ion-avatar slot="start">
+      <ion-avatar slot="start" (click)="launchProfilePage()">
         <img src="https://habib.al-mawali.com/wp-content/uploads/IMG_4838-1-768x768.jpg">
       </ion-avatar>
         <ion-label class="greeting">
@@ -20,11 +20,6 @@
 			</ion-button>
     </ion-buttons>
   </ion-toolbar>
-  <!--ion-item lines="none">
-  <ion-label lines="none">
-    <h2>Live Auctions</h2>
-  </ion-label>
-</ion-item-->
 </ion-header>
 
 <ion-content>
