@@ -8,4 +8,21 @@ import { Component } from '@angular/core';
     './styles/contact-card.shell.scss'
   ]
 })
-export class ContactCardPage { }
+export class ContactCardPage { 
+  
+  // enable push notifications 
+  pushNotificationsEnabled(ionicButton){
+    if(ionicButton.color === 'dark'){
+      ionicButton.color = 'danger';
+      console.log('turing on');
+    }
+    else{
+      ionicButton.color = 'dark';
+      console.log('turing off');
+    }
+  }
+}
+
+
+
+

@@ -30,7 +30,7 @@
             </ion-button>
           </ion-col>
           <ion-col size="4" class="ion-text-center">
-            <ion-button fill="clear" color="dark" routerLink="/details">
+            <ion-button #first fill="clear" color="dark" (click)="pushNotificationsEnabled(first)">
               <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
             </ion-button>
           </ion-col>
