@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-contact-card',
@@ -9,6 +11,11 @@ import { Component } from '@angular/core';
   ]
 })
 export class ContactCardPage { 
+
+  constructor(
+    public router: Router
+
+  ){}
   
   // enable push notifications 
   pushNotificationsEnabled(ionicButton){
@@ -20,6 +27,11 @@ export class ContactCardPage {
       ionicButton.color = 'dark';
       console.log('turing off');
     }
+  }
+
+  returnHome(): void {
+    console.log('go back to landing page');
+    this.router.navigate(['/app/categories']);
   }
 }
 
