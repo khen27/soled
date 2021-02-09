@@ -15,6 +15,10 @@ export class TabsPage  {
 
   ionViewWillEnter() {
     this.menu.enable(true);
+
+    // hiding the tab bar
+    var tabPointer = document.getElementById('tabOff');
+    tabPointer.hidden = true;
   }
 
   ionTabsDidChange(event) {
