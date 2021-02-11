@@ -311,3 +311,9 @@ p b {
   background-size: cover;
   background-position: center;
 }
+
+.legal-action {
+  font-weight: 500;
+  color: var(--ion-color-secondary);
+  cursor: pointer;
+}

@@ -44,7 +44,9 @@
         <p>Save money, win auctions, and buy cool stuff all in one place. Let's get started. </p>
         <div class="login">
           <ion-button class="facebookButton" color="facebook"  (click)="doGoogleSignup()">Continue With Facebook</ion-button>
-          <p class="legalText"> <u>Legal Stuff</u></p>
+        </div>
+        <div class="legalText">
+        <br>By creating an account you agree to our <a class="legal-action" (click)="showPrivacyModal()">Privacy Policy</a> and <a class="legal-action" (click)="showTermsModal()">Terms of use</a>.
         </div>
       </div>
     </ion-slide>
