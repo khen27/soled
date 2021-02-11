@@ -9,14 +9,16 @@
 <ion-content>
   <ion-slides pager="true" [options]="slidesOptions">
 
-    <ion-slide class="splashScreen">
-      
+    <ion-slide>
+      <div class="slide">
+        <br><br><br><br><br><br><br><br><br> 
+        <img src="./assets/sample-images/walkthrough/soled-logo-v2.png"/>
+      </div>
     </ion-slide>
 
     <ion-slide>
       <div class="slide">
         <img src="./assets/sample-images/walkthrough/onboarding_one.png"/>
-        <h2>SOLED APP</h2>
         <p>We auction authentic shoes and apparel for below-retail prices. Bid small, win big, and earn more rewards</p>
       </div>
     </ion-slide>
@@ -46,7 +48,7 @@
           <ion-button class="facebookButton" color="facebook"  (click)="doGoogleSignup()">Continue With Facebook</ion-button>
         </div>
         <div class="legalText">
-        <br>By creating an account you agree to our <a class="legal-action" (click)="showPrivacyModal()">Privacy Policy</a> and <a class="legal-action" (click)="showTermsModal()">Terms of use</a>.
+        <br><br>By creating an account you agree to our <a class="legal-action" (click)="showPrivacyModal()">Privacy Policy</a> and <a class="legal-action" (click)="showTermsModal()">Terms of use</a>.
         </div>
       </div>
     </ion-slide>
