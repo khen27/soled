@@ -1,8 +1,8 @@
 {
-  "name": "IonicFullApp-PRO",
-  "description": "The most advanced and complete Mobile & PWA Ionic starter app template",
-  "version": "2.2.0",
-  "author": "IonicThemes",
+  "name": "SoleD",
+  "description": "We auction authentic shoes and apparel for below-retail prices. Bid small, win big, and earn more rewards",
+  "version": "1.0.0",
+  "author": "AppBlitz",
   "contributors": [
     "Dayana <dayana@ionicthemes.com>",
     "Agustín <agustin@ionicthemes.com>"
@@ -31,6 +31,7 @@
     "@angular/platform-server": "^10.1.2",
     "@angular/router": "^10.1.2",
     "@angular/service-worker": "^10.1.2",
+    "@capacitor-community/facebook-login": "^1.0.3",
     "@capacitor/android": "^2.4.1",
     "@capacitor/cli": "^2.4.1",
     "@capacitor/core": "^2.4.1",
