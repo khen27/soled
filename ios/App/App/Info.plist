@@ -41,16 +41,21 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb661697104401356</string>
+				<string>fb117409946941048</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>661697104401356</string>
+	<string>117409946941048</string>
 	<key>FacebookDisplayName</key>
-	<string>Ionic 5 Firebase Auth</string>
+	<string>SoleD</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>fbapi</string>
+	<string>fbauth2</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>

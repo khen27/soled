@@ -4,4 +4,6 @@
     <string name="title_activity_main">SoleD</string>
     <string name="package_name">com.appblitz.soled</string>
     <string name="custom_url_scheme">com.appblitz.soled</string>
+    <string name="facebook_app_id">117409946941048</string>
+    <string name="fb_login_protocol_scheme">fb117409946941048</string>
 </resources>
