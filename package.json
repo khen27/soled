@@ -4,10 +4,12 @@
   "version": "1.0.0",
   "author": "AppBlitz",
   "contributors": [
-    "Dayana <dayana@ionicthemes.com>",
-    "Agustín <agustin@ionicthemes.com>"
+    "Karl <karl@appblitz.dev>",
+    "Jacob <https://github.com/jdurrah1>",
+    "Deondre  <https://github.com/djd6797",
+    "Adonis "
   ],
-  "homepage": "https://ionicthemes.com/",
+  "homepage": "https://github.com/khen27",
   "private": true,
   "scripts": {
     "ng": "ng",
