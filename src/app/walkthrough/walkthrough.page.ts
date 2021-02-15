@@ -2,10 +2,16 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, AfterViewInit, ViewChild, HostBinding, PLATFORM_ID, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { IonSlides, ModalController, MenuController, IonRouterOutlet } from '@ionic/angular';
+import { IonSlides, ModalController, MenuController, IonRouterOutlet, isPlatform } from '@ionic/angular';
 
 import { TermsOfServicePage } from '../terms-of-service/terms-of-service.page';
 import { PrivacyPolicyPage } from '../privacy-policy/privacy-policy.page';
+
+import { FacebookLoginPlugin, FacebookLogin } from '@capacitor-community/facebook-login';
+import { Plugins, registerWebPlugin } from '@capacitor/core';
+import { HttpClient } from '@angular/common/http';
+//import { isPlatform } from '@ionic/angular'; // Already imoorted above...
+registerWebPlugin(FacebookLogin);
 
 @Component({
   selector: 'app-walkthrough',
@@ -23,6 +29,12 @@ export class WalkthroughPage implements AfterViewInit {
     }
   };
 
+  fbLogin: FacebookLoginPlugin;
+  user = null;
+  token = null;
+  aString = null;//"A string I made";
+  aInt = null;//7;
+  
   @ViewChild(IonSlides, { static: true }) slides: IonSlides;
 
   @HostBinding('class.first-slide-active') isFirstSlide = true;
@@ -34,9 +46,11 @@ export class WalkthroughPage implements AfterViewInit {
     public menu: MenuController,
     public modalController: ModalController,
     private routerOutlet: IonRouterOutlet,
-    public router: Router
-
-  ) { }
+    public router: Router,
+    private http: HttpClient
+  ) { 
+    this.setupFbLogin();
+  }
 
   // Disable side menu for this page
   ionViewDidEnter(): void {
@@ -78,10 +92,91 @@ export class WalkthroughPage implements AfterViewInit {
     });
   }
 
-  doGoogleSignup(): void {
-    console.log('google signup');
-    this.router.navigate(['app/categories']);
+// This ain't my Facebook login..
+doGoogleSignup(): void {
+  console.log('google signup');
+  this.router.navigate(['app/categories']);
+}
+
+// But this one is!
+async setupFbLogin() {
+  if (isPlatform('desktop')) {
+    this.fbLogin = FacebookLogin;
   }
+  else {
+    // Use the native imlementation inside a real app!
+    const { FacebookLogin } = Plugins;
+    this.fbLogin = FacebookLogin;
+  }
+}
+
+// And this one too!
+async FacebookLogin() {
+  const FACEBOOK_PERMISSIONS = ['email', 'user_birthday'];
+  const result = await this.fbLogin.login({ permissions: FACEBOOK_PERMISSIONS });
+  // console.log('result: ', result);
+  // console.log('aString: ',this.aString);
+  // console.log('aInt: ',this.aInt);
+  // this.aString = "Some text";
+  // this.aInt = 7;
+  // console.log('testing change in the same page');
+  // console.log('aString: ',this.aString);
+  // console.log('aInt: ',this.aInt);
+  if (result.accessToken && result.accessToken.userId) {
+    this.token = result.accessToken;
+    await this.loadUserData(); ///////////
+  }
+  else if (result.accessToken && !result.accessToken.userId) {
+    // Web only gets the token but not the user ID
+    // Directly call get token to retrieve it now
+    await this.getCurrentToken(); ////////
+  }
+  else {
+    // Login failed
+    return
+  }
+
+  console.log('facebook signup, user: ', this.user);
+  // this.router.navigate(['app/categories'], navigationExtras);
+  //document.getElementById("LoginText").innerHTML = this.user.name;
+}
+
+// This one's mine TOO
+async getCurrentToken() {
+  const result = await this.fbLogin.getCurrentAccessToken();
+
+  if (result.accessToken) {
+    this.token = result.accessToken;
+    await this.loadUserData(); ///////////////////////////////
+  }
+  else {
+    // Not logged in.
+  }
+}
+
+// This one's part of Facebook login too.
+async loadUserData() {
+  const url = `https://graph.facebook.com/${this.token.userId}?fields=id,name,picture.width(720),birthday,email&access_token=${this.token.token}`;
+  this.http.get(url).subscribe(res => {
+    //console.log('user: ', res);
+    this.user = res;
+  });
+}
+
+// And this one too (for logging out though)
+async FacebookLogout() {
+  await this.fbLogin.logout();
+  this.user = null;
+  this.token = null;
+}
+
+  // let navigationExtras: NavigationExtras = {
+  //   state: {
+  //     user: this.user,
+  //     tString: this.aString,
+  //     tInt: this.aInt
+  //   }
+  // };
 
   async showTermsModal() {
     const modal = await this.modalController.create({

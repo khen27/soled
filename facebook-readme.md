@@ -17,6 +17,6 @@ From here, we needed to set up a Facebook developer account to register the Sole
 - Relevant Facebook/SoleD app details:
     - App Name: **SoleD**
     - App ID: **117409946941048**
-    - (IOS) Bundle ID / (Android) Google Play Package Name: **com.appblitz.soled**
+    - (iOS) Bundle ID / (Android) Google Play Package Name: **com.appblitz.soled**
     - (Android) Key Hash: **e3RAyD8y4wTO6Nd1JhLGjSxp/bk=**
 
