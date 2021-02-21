@@ -112,42 +112,39 @@ async setupFbLogin() {
 
 // And this one too!
 async FacebookLogin() {
+  console.log("Test 1: FacebookLogin() Starting");
   const FACEBOOK_PERMISSIONS = ['email', 'user_birthday'];
   const result = await this.fbLogin.login({ permissions: FACEBOOK_PERMISSIONS });
-  // console.log('result: ', result);
-  // console.log('aString: ',this.aString);
-  // console.log('aInt: ',this.aInt);
-  // this.aString = "Some text";
-  // this.aInt = 7;
-  // console.log('testing change in the same page');
-  // console.log('aString: ',this.aString);
-  // console.log('aInt: ',this.aInt);
+  console.log("Test 2: result(from fbLogin.login) != undefined ? (true) ", (result != undefined));
   if (result.accessToken && result.accessToken.userId) {
     this.token = result.accessToken;
-    await this.loadUserData(); ///////////
+    this.loadUserData(); 
   }
   else if (result.accessToken && !result.accessToken.userId) {
+    console.log("Test 3: I'm on the web");
     // Web only gets the token but not the user ID
     // Directly call get token to retrieve it now
-    await this.getCurrentToken(); ////////
+    await this.getCurrentToken(); 
   }
   else {
     // Login failed
     return
   }
-
+  console.log("Test 9: Completing login. I don't believe Test 8 will have run yet, so user below is still undefined huh?");
   console.log('facebook signup, user: ', this.user);
-  // this.router.navigate(['app/categories'], navigationExtras);
-  //document.getElementById("LoginText").innerHTML = this.user.name;
+  //this.router.navigate(['app/categories']);
+  document.getElementById("LoginText").innerHTML = `Hi ${this.user.name}`;
 }
 
 // This one's mine TOO
 async getCurrentToken() {
+  console.log("Test 4: getCurrentToken() Starting");
   const result = await this.fbLogin.getCurrentAccessToken();
-
+  console.log("Test 5: result(from fbLogin.GetCurrentAccessToken() != undefined ? (true) ", (result != undefined));
   if (result.accessToken) {
     this.token = result.accessToken;
-    await this.loadUserData(); ///////////////////////////////
+    await this.loadUserData(); 
+    console.log("Test 7***: this.http.get(url).subscribe(callback) is run outside of this stack I'm guessing")
   }
   else {
     // Not logged in.
@@ -156,11 +153,17 @@ async getCurrentToken() {
 
 // This one's part of Facebook login too.
 async loadUserData() {
+  console.log("Test 6: loadUserData() Starting");
+  console.log("Test 7: token = ", this.token);
   const url = `https://graph.facebook.com/${this.token.userId}?fields=id,name,picture.width(720),birthday,email&access_token=${this.token.token}`;
-  this.http.get(url).subscribe(res => {
+  const res = await this.http.get(url).toPromise(); //.then(res => {
+    //console.log("Test 8: Supposed to be setting user. But hmmm, this'll run after 7*** won't it huh?");
     //console.log('user: ', res);
-    this.user = res;
-  });
+    //this.user = res;
+  //});
+  console.log("Test 8***: doing the callback outside of the observable");
+  console.log('user: ', res);
+  this.user = res;
 }
 
 // And this one too (for logging out though)
@@ -169,14 +172,6 @@ async FacebookLogout() {
   this.user = null;
   this.token = null;
 }
-
-  // let navigationExtras: NavigationExtras = {
-  //   state: {
-  //     user: this.user,
-  //     tString: this.aString,
-  //     tInt: this.aInt
-  //   }
-  // };
 
   async showTermsModal() {
     const modal = await this.modalController.create({
