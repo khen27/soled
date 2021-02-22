@@ -5,6 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 //import { /*IonSlides, ModalController, MenuController, IonRouterOutlet,*/ isPlatform } from '@ionic/angular';
 
 import { FacebookProviderService } from '../facebook-provider.service';
+import { profile } from 'console';
 
 
 @Component({
@@ -18,6 +19,7 @@ import { FacebookProviderService } from '../facebook-provider.service';
 })
 export class CategoriesPage implements AfterViewInit { 
   user = null;
+  profilePic: HTMLImageElement;
 
   constructor(
     public router: Router,
@@ -51,11 +53,14 @@ export class CategoriesPage implements AfterViewInit {
   ngAfterViewInit(): void {
     this.user = this.facebookProvider.getUser();
     let userGreeting = document.getElementById("UserGreeting");
+    this.profilePic = <HTMLImageElement>document.getElementById("ProfilePic");
     if (this.user == null) {
-      userGreeting.innerHTML = "Hi, no one is online. This screen shouldn't be viewable."
+      userGreeting.innerHTML = "Hi, no one is online. This screen shouldn't be viewable.";
+      this.profilePic.src = "https://habib.al-mawali.com/wp-content/uploads/IMG_4838-1-768x768.jpg";
     }
     else {
-      userGreeting.innerHTML = `Hey ${this.user.name},`
+      userGreeting.innerHTML = `Hey ${this.user.name},`;
+      this.profilePic.src = this.user.picture.data.url;
     }
 
     // Accessing slides in server platform throw errors
