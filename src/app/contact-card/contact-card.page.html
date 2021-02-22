@@ -12,12 +12,13 @@
   <div class="ion-padding">
     <ion-card class="ion-margin-bottom">
       <ion-avatar class="ion-align-items-center">
-      <ion-img [src]="'./assets/sample-images/notifications/karl.jpg'"></ion-img>
+      <!-- <ion-img id="ProfilePic" [src]="'./assets/sample-images/notifications/karl.jpg'"></ion-img> -->
+      <ion-img id="ProfilePic" src="{{profilePicSrc}}"></ion-img>
       </ion-avatar>
       <ion-card-content>
         <ion-row>
           <ion-col size="12" class="ion-text-center ion-margin-bottom">
-            <ion-card-title>Karl Henderson</ion-card-title>
+            <ion-card-title id="ProfileName">User</ion-card-title>
             <ion-card-subtitle>10 Bids | 200 Points</ion-card-subtitle>
           </ion-col>
           <ion-col size="4" class="ion-text-center">
