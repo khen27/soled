@@ -12,12 +12,17 @@
     </ion-item>
     <ion-buttons slot="end">
 			<ion-button class="bordered"  color="dark" (click)="launchStorePage()">
-				<ion-icon  name="cart-outline" ></ion-icon>
+				<ion-icon  name="logo-usd" ></ion-icon>
 			</ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
-			<ion-button class="bordered" fill="solid" color="light">
+			<ion-button class="bordered" fill="solid" color="light" (click)="launchRafflePage()">
 				<ion-icon  name="gift-outline" ></ion-icon>
+			</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+			<ion-button class="bordered" fill="solid" color="light" (click)="launchCartPage()">
+				<ion-icon  name="cart-outline" ></ion-icon>
 			</ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -27,19 +32,19 @@
   <div class="slides ion-margin-bottom">
     <ion-slides [options]="slideOptions">
 			<ion-slide>
-				<ion-card>
+				<ion-card (click)="launchFashionDetailsPage()">
 					<ion-card-header>
             <ion-toolbar>
               <ion-buttons class="icon-shape" slot="start">
-                <ion-button color="favorite">
+                <ion-button color="favorite" (click)="launchShareSystem()">
                   <ion-icon  slot="icon-only" name="share-outline" ></ion-icon>
                 </ion-button>
               </ion-buttons>
-              <!--ion-buttons class="icon-shape" slot="end">
-                <ion-button fill="clear" color="dark">
-                  <ion-icon name="add-circle-outline" ></ion-icon>
+              <ion-buttons class="icon-shape" slot="end">
+                <ion-button fill="clear" color="dark" (click)="launchAuctionPage()">
+                  <ion-icon name="time-outline" ></ion-icon>
                 </ion-button>
-              </ion-buttons-->
+              </ion-buttons>
             </ion-toolbar>
 						<img class='files' src="./assets/sample-images/categories/Jordan_1_High_Dark_Mocha.png">
 					</ion-card-header>
@@ -62,7 +67,7 @@
 			</ion-slide>
       <!-----------------------------------------right slide------------------------------------------------------------>
 			<ion-slide>
-				<ion-card>
+				<ion-card (click)="launchFashionDetailsPage()">
 					<ion-card-header>
 						<ion-toolbar>
               <ion-buttons class="icon-shape" slot="start">
@@ -70,11 +75,11 @@
                   <ion-icon  slot="icon-only" name="share-outline" ></ion-icon>
                 </ion-button>
               </ion-buttons>
-              <!--ion-buttons class="icon-shape" slot="end">
+              <ion-buttons class="icon-shape" slot="end">
                 <ion-button fill="clear" color="dark">
-                  <ion-icon name="add-circle-outline" ></ion-icon>
+                  <ion-icon name="time-outline" ></ion-icon>
                 </ion-button>
-              </ion-buttons-->
+              </ion-buttons>
             </ion-toolbar>
 							<img class='files' src="./assets/sample-images/categories/pink-nike.jpg">
 					</ion-card-header>

@@ -127,6 +127,15 @@ ion-content {
     padding: 4px 10px 20px 10px;
     border-radius: 0 0 28px 28px;
 
+    ion-card {
+      height: 525px;
+    }
+
+    img {
+      height: 350px;
+      width: 500px;
+    }
+
     ion-item {
       --background: none;
       background: none;
@@ -163,6 +172,15 @@ ion-content {
     //padding: 6px 6px 0px 0px;
     padding: 4px 10px 20px 10px;
     border-radius: 0 0 28px 28px;
+
+    ion-card {
+      height: 445px;
+    }
+
+    img {
+      height: 350px;
+      width: 500px;
+    }
 
     ion-item {
      // --background: #3670e5;
