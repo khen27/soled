@@ -37,6 +37,10 @@ export class ContactCardPage implements AfterViewInit {
     this.router.navigate(['/app/categories']);
   }
 
+  launchAboutUsPage(): void {
+    console.log('launch about us page (not implemented yet)')
+  }
+
   // Disable side menu for this page
   ionViewDidEnter(): void {
     //this.menu.enable(false);

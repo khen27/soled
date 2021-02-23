@@ -20,6 +20,7 @@ import { profile } from 'console';
 export class CategoriesPage implements AfterViewInit { 
   user = null;
   profilePic: HTMLImageElement;
+  clickHandled: Boolean = false;
 
   constructor(
     public router: Router,
@@ -38,6 +39,39 @@ export class CategoriesPage implements AfterViewInit {
   launchStorePage(): void {
     console.log('launch store landing page');
     this.router.navigate(['/app/categories/fashion']);
+  }
+
+  launchRafflePage(): void {
+    console.log('launch raffle page (not implemented yet)');
+  }
+
+  launchCartPage(): void {
+    console.log('launch cart page (not implemented yet)');
+  }
+
+  launchFashionDetailsPage(): void {
+    this.propagationHandler( () => {
+      console.log('launch fashion details page (not implemented yet)');
+    });
+  }
+
+  launchShareSystem(): void {
+    this.propagationHandler( () => {
+      console.log('launch share system (not implemented yet)');
+    });
+  }
+
+  launchAuctionPage(): void {
+    this.propagationHandler( () => {
+      console.log('launch auction page (not implemented yet)');
+    });
+  }
+
+  propagationHandler(resolve:Function) {
+    if (this.clickHandled) return;
+    resolve();
+    this.clickHandled = true;
+    setTimeout(() => { console.log("reset the click trigger"); this.clickHandled = false; }, 0 );
   }
 
   // Disable side menu for this page
