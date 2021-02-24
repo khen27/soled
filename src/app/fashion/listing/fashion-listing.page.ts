@@ -48,4 +48,17 @@ export class FashionListingPage implements OnInit {
   ionViewWillLeave(): void {
     this.subscriptions.unsubscribe();
   }
+
+  launchBuyBidsPage(): void {
+    console.log('launch buy bids page (not implemented yet)');
+  }
+
+  launchCartPage(): void {
+    console.log('launch cart page (not implemented yet)');
+  }
+
+  launchFashionDetailsPage(): void {
+    console.log('launch fashion details page (not implemented yet)');
+  }
+
 }

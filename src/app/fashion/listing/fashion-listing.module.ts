@@ -32,4 +32,5 @@ const routes: Routes = [
     FashionService
   ]
 })
-export class FashionListingPageModule {}
+export class FashionListingPageModule {
+}
