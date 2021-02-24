@@ -130,4 +130,13 @@ export class FashionDetailsPage implements OnInit {
   ionViewWillLeave(): void {
     this.subscriptions.unsubscribe();
   }
+
+  addToCart(): void {
+    console.log('add item to cart (not implemented yet)');
+  }
+
+  launchCartPage(): void {
+    console.log('launches cart page (not implemented yet)');
+  }
+  
 }

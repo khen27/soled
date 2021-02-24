@@ -1,13 +1,66 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="app/categories/fashion"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Fashion Details</ion-title>
+    <ion-item>
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon name="chevron-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="launchCartPage()">
+          <ion-icon name="cart-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-label>Item</ion-label>
+    </ion-item>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="fashion-details-content">
+<ion-content>
+  <div class="item-information">
+    <ion-item class="item-title" lines="none">
+      <ion-label>Air Jordans</ion-label>
+    </ion-item>
+    <ion-slides>
+      <ion-slide>
+        <!--ion-card class="card">
+          <ion-card-header class="item-name"><h2>Air Jordans</h2></ion-card-header-->
+          <img src="./assets/sample-images/categories/Jordan_1_High_Dark_Mocha.png">
+          <!--ion-card-title class= "ion-margin-bottom">$250 <del>$450</del></ion-card-title>
+          <ion-card-subtitle class="ion-margin-bottom">This is a shoe.</ion-card-subtitle>
+        </ion-card-->
+      </ion-slide>
+      <ion-slide>
+        <!--ion-card class="card">
+          <ion-card-header class="item-name"><h2>Air Jordans</h2></ion-card-header-->
+          <img src="./assets/sample-images/categories/Jordan_1_High_Dark_Mocha.png">
+          <!--ion-card-title class= "ion-margin-bottom">$250 <del>$450</del></ion-card-title>
+          <ion-card-subtitle class="ion-margin-bottom">This is a shoe.</ion-card-subtitle>
+        </ion-card-->
+      </ion-slide>
+   </ion-slides> 
+   <ion-item class="description" lines="none">
+     <ion-label>
+      <h2>$250 <del>$450</del></h2>
+      <p>This is a shoe description.</p>
+    </ion-label>
+   </ion-item>  
+  </div>
+
+  <div class="cart">
+    <ion-item (click)="addToCart()"> 
+      <ion-label>Add To Cart</ion-label>
+      <ion-buttons>
+        <ion-button>
+          <ion-icon name="chevron-forward" slot="end"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </div>
+
+</ion-content>
+
+<!--ion-content class="fashion-details-content">
   <ion-row class="slider-row">
     <ion-slides class="details-slides" pager="true" [options]="slidesOptions">
       <ion-slide class="" *ngFor="let image of details?.showcaseImages">
@@ -65,9 +118,9 @@
     <span class="details-description product-code">
       <app-text-shell animation="gradient" [data]="details?.upc"></app-text-shell>
     </span>
-  </div>
+  </div-->
   <!-- Related Products -->
-  <div class="related-products-wrapper" *ngIf="details?.relatedProducts && details.relatedProducts.length > 0">
+  <!--div class="related-products-wrapper" *ngIf="details?.relatedProducts && details.relatedProducts.length > 0">
     <h3 class="detail-alt-title">Why Don't you try?</h3>
     <ion-row class="related-products-list">
       <ion-col size="6" class="related-product-item" *ngFor="let relatedProduct of details?.relatedProducts">
@@ -91,4 +144,4 @@
       </ion-col>
     </ion-row>
   </div>
-</ion-content>
+</ion-content-->

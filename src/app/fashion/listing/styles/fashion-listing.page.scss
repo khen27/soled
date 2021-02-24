@@ -142,7 +142,12 @@
 ion-header{
   ion-toolbar{
     ion-item{
-      --ion-item-background:#316dd0;
+      --ion-item-background: linear-gradient(
+        90deg,
+        rgba(43, 90, 148, 1) 0%,
+        rgba(45, 11, 229, 1) 35%,
+        rgba(45, 112, 229, 1) 100%
+      );;
 
       h4{
         text-align: center;
@@ -170,7 +175,12 @@ ion-content {
     margin-top: 38px;
     
     ion-card {
-      background: #316dd0;
+      background: linear-gradient(
+        90deg,
+        rgba(43, 90, 148, 1) 0%,
+        rgba(45, 11, 229, 1) 35%,
+        rgba(45, 112, 229, 1) 100%
+      );
       width: 375px;
       height: 375px;
       box-shadow: none;

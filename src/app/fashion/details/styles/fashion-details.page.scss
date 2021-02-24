@@ -16,8 +16,80 @@
   --page-color: #cb328f;
 }
 
+ion-header{
+  ion-toolbar{
+    ion-item{
+      --ion-item-background: linear-gradient(
+        90deg,
+        rgba(43, 90, 148, 1) 0%,
+        rgba(45, 11, 229, 1) 35%,
+        rgba(45, 112, 229, 1) 100%
+      );
+      ion-label{
+        text-align: center;
+        font-weight: 700;
+        font-size: 2.75em;
+      }
+    }
+  }
+}
+
+ion-content{
+  .item-information{
+
+    .item-title{
+      text-align: center;
+      font-size: 1.75em;
+      font-weight: 400;
+    }
+
+    .description{
+      margin: 14px;
+      
+      h2{
+        font-size: 1.5em;
+      }
+
+      p{
+        font-size: 1.2em;
+      }
+
+      del{
+        color: red;
+      } 
+    }
+
+    .card{
+        border: 0 !important;
+        box-shadow: 0 !important;
+        border: none !important;
+        border-style: none !important;
+        height: 500px;
+        width: 900px;   
+    }
+  }
+
+  .cart{
+    --ion-item-background: black;
+    ion-item{
+      --border-radius: 14px;
+      margin: 30px;
+    }
+
+    ion-icon{
+      color: white;
+    }
+
+    ion-label{
+      text-align: center;
+      color:white;
+      font-size: 1.3em;
+    }
+  }
+}
+
 // Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
-.fashion-details-content {
+/*.fashion-details-content {
   --background: var(--page-background);
 
   .slider-row {
@@ -246,4 +318,4 @@
   .alert-message {
     display: none;
   }
-}
+}*/
