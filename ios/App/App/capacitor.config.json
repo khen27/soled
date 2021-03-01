@@ -1,6 +1,6 @@
 {
-  "appId": "com.ionicthemes.ionic5fullapp",
-  "appName": "Ionic5FullApp",
+  "appId": "com.appblitz.soled",
+  "appName": "SoleD",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "dist/app/browser",
