@@ -63,6 +63,8 @@ export class WalkthroughPage implements AfterViewInit {
   // Restore to default when leaving this page
   ionViewDidLeave(): void {
     this.menu.enable(true);
+    var loginText = document.getElementById("LoginText");
+    loginText.innerHTML = "";
   }
 
   ngAfterViewInit(): void {

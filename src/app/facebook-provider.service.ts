@@ -35,7 +35,6 @@ export class FacebookProviderService {
     }
   }
 
-  // And this one too!
   async FacebookLogin() {
     console.log("Test 1: FacebookLogin() Starting");
     const FACEBOOK_PERMISSIONS = ['email', 'user_birthday'];
@@ -68,7 +67,6 @@ export class FacebookProviderService {
     return true;
   }
 
-  // This one's mine TOO
   private async getCurrentToken() {
     console.log("Test 4: getCurrentToken() Starting");
     const result = await this.fbLogin.getCurrentAccessToken();
@@ -83,22 +81,16 @@ export class FacebookProviderService {
     }
   }
 
-  // This one's part of Facebook login too.
   private async loadUserData() {
     console.log("Test 6: loadUserData() Starting");
     console.log("Test 7: token = ", this.token);
     const url = `https://graph.facebook.com/${this.token.userId}?fields=id,name,picture.width(720),birthday,email&access_token=${this.token.token}`;
     const res = await this.http.get(url).toPromise(); //.then(res => {
-    //console.log("Test 8: Supposed to be setting user. But hmmm, this'll run after 7*** won't it huh?");
-    //console.log('user: ', res);
-    //this.user = res;
-    //});
     console.log("Test 8***: doing the callback outside of the observable");
     console.log('user: ', res);
     this.user = res;
   }
 
-  // And this one too (for logging out though)
   async FacebookLogout() {
     this.user = null;
     this.token = null;

@@ -99,27 +99,5 @@ export class CategoriesPage implements AfterViewInit {
         this.profilePic.src = ret.picture.data.url;
       }
     });
-
-
-    // Accessing slides in server platform throw errors
-    // if (isPlatformBrowser(this.platformId)) {
-    //   // ViewChild is set
-    //   this.slides.isBeginning().then(isBeginning => {
-    //     this.isFirstSlide = isBeginning;
-    //   });
-    //   this.slides.isEnd().then(isEnd => {
-    //     this.isLastSlide = isEnd;
-    //   });
-
-    //   // Subscribe to changes
-    //   this.slides.ionSlideWillChange.subscribe(changes => {
-    //     this.slides.isBeginning().then(isBeginning => {
-    //       this.isFirstSlide = isBeginning;
-    //     });
-    //     this.slides.isEnd().then(isEnd => {
-    //       this.isLastSlide = isEnd;
-    //     });
-    //   });
-    // }
   }
 }
