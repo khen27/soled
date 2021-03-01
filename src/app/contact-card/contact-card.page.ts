@@ -14,7 +14,7 @@ import { FacebookProviderService } from '../facebook-provider.service';
 export class ContactCardPage implements AfterViewInit {
   user = null;
   profilePicSrc: String;
-  
+
   constructor(
     public router: Router,
     private facebookProvider: FacebookProviderService
@@ -41,6 +41,12 @@ export class ContactCardPage implements AfterViewInit {
     console.log('launch about us page (not implemented yet)')
   }
 
+  logout(): void {
+    console.log('logging out');
+    this.facebookProvider.FacebookLogout();
+    this.router.navigate(['/walkthrough']);
+  }
+
   // Disable side menu for this page
   ionViewDidEnter(): void {
     //this.menu.enable(false);
@@ -52,17 +58,20 @@ export class ContactCardPage implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.user = this.facebookProvider.getUser();
-    let userName = document.getElementById("ProfileName");
-    //this.profilePicSrc = <HTMLImageElement>document.getElementById("ProfilePic");
-    if (this.user == null) {
-      userName.innerHTML = "No User";
-      this.profilePicSrc = "./assets/sample-images/notifications/karl.jpg";
-    }
-    else {
-      userName.innerHTML = `${this.user.name}`;
-      this.profilePicSrc = this.user.picture.data.url;
-    }
+    let res = this.facebookProvider.getUser();
+    res.then((ret) => {
+      let userName = document.getElementById("ProfileName");
+      //this.profilePicSrc = <HTMLImageElement>document.getElementById("ProfilePic");
+      if (ret == null) {
+        this.router.navigate(['/walkthrough']);
+        userName.innerHTML = "No User";
+        this.profilePicSrc = "./assets/sample-images/notifications/karl.jpg";
+      }
+      else {
+        userName.innerHTML = `${ret.name}`;
+        this.profilePicSrc = ret.picture.data.url;
+      }
+    });
   }
 }
 

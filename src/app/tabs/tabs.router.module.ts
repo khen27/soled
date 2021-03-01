@@ -95,6 +95,10 @@ const routes: Routes = [
         ]
       }
     ]
+  },
+  {
+    path: 'walkthrough',
+    loadChildren: () => import('../walkthrough/walkthrough.module').then(m => m.WalkthroughPageModule)
   }
 ];
 

@@ -17,7 +17,7 @@ import { profile } from 'console';
     './styles/categories.responsive.scss'
   ]
 })
-export class CategoriesPage implements AfterViewInit { 
+export class CategoriesPage implements AfterViewInit {
   user = null;
   profilePic: HTMLImageElement;
   clickHandled: Boolean = false;
@@ -25,8 +25,8 @@ export class CategoriesPage implements AfterViewInit {
   constructor(
     public router: Router,
     private facebookProvider: FacebookProviderService
-  ){}
-  
+  ) { }
+
   slideOptions = {
     slidesPerView: 1.5
   };
@@ -50,52 +50,56 @@ export class CategoriesPage implements AfterViewInit {
   }
 
   launchFashionDetailsPage(): void {
-    this.propagationHandler( () => {
+    this.propagationHandler(() => {
       console.log('launch fashion details page (not implemented yet)');
     });
   }
 
   launchShareSystem(): void {
-    this.propagationHandler( () => {
+    this.propagationHandler(() => {
       console.log('launch share system (not implemented yet)');
     });
   }
 
   launchAuctionPage(): void {
-    this.propagationHandler( () => {
+    this.propagationHandler(() => {
       console.log('launch auction page (not implemented yet)');
     });
   }
 
-  propagationHandler(resolve:Function) {
+  propagationHandler(resolve: Function) {
     if (this.clickHandled) return;
     resolve();
     this.clickHandled = true;
-    setTimeout(() => { console.log("reset the click trigger"); this.clickHandled = false; }, 0 );
+    setTimeout(() => { console.log("reset the click trigger"); this.clickHandled = false; }, 0);
   }
 
   // Disable side menu for this page
   ionViewDidEnter(): void {
     //this.menu.enable(false);
   }
-  
+
   // Restore to default when leaving this page
   ionViewDidLeave(): void {
     //this.menu.enable(true);
   }
-  
+
   ngAfterViewInit(): void {
-    this.user = this.facebookProvider.getUser();
-    let userGreeting = document.getElementById("UserGreeting");
-    this.profilePic = <HTMLImageElement>document.getElementById("ProfilePic");
-    if (this.user == null) {
-      userGreeting.innerHTML = "Hi, no one is online. This screen shouldn't be viewable.";
-      this.profilePic.src = "https://habib.al-mawali.com/wp-content/uploads/IMG_4838-1-768x768.jpg";
-    }
-    else {
-      userGreeting.innerHTML = `Hey ${this.user.name},`;
-      this.profilePic.src = this.user.picture.data.url;
-    }
+    let res = this.facebookProvider.getUser();
+    res.then((ret) => {
+      let userGreeting = document.getElementById("UserGreeting");
+      this.profilePic = <HTMLImageElement>document.getElementById("ProfilePic");
+      if (ret == null) {
+        userGreeting.innerHTML = "Hi, no one is online. This screen shouldn't be viewable.";
+        this.profilePic.src = "https://habib.al-mawali.com/wp-content/uploads/IMG_4838-1-768x768.jpg";
+        this.router.navigate(['walkthrough']);
+      }
+      else {
+        userGreeting.innerHTML = `Hey ${ret.name},`;
+        this.profilePic.src = ret.picture.data.url;
+      }
+    });
+
 
     // Accessing slides in server platform throw errors
     // if (isPlatformBrowser(this.platformId)) {
@@ -106,7 +110,7 @@ export class CategoriesPage implements AfterViewInit {
     //   this.slides.isEnd().then(isEnd => {
     //     this.isLastSlide = isEnd;
     //   });
-  
+
     //   // Subscribe to changes
     //   this.slides.ionSlideWillChange.subscribe(changes => {
     //     this.slides.isBeginning().then(isBeginning => {

@@ -4,7 +4,10 @@ import { FacebookLoginPlugin, FacebookLogin } from '@capacitor-community/faceboo
 import { Plugins, registerWebPlugin } from '@capacitor/core';
 import { HttpClient } from '@angular/common/http';
 import { isPlatform } from '@ionic/angular';
+import { parse } from 'path';
 registerWebPlugin(FacebookLogin);
+
+const { Storage } = Plugins;
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +24,6 @@ export class FacebookProviderService {
     this.setupFbLogin();
   }
 
-  // But this one is!
   private async setupFbLogin() {
     if (isPlatform('desktop')) {
       this.fbLogin = FacebookLogin;
@@ -55,6 +57,13 @@ export class FacebookProviderService {
     }
     console.log("Test 9: Completing login. I don't believe Test 8 will have run yet, so user below is still undefined huh?");
     console.log('facebook signup, user: ', this.user);
+    Storage.set({
+      key: 'facebookCredentials',
+      value: JSON.stringify({
+        token: this.token.token,
+        userId: this.token.userId
+      })
+    });
     //this.router.navigate(['app/categories']);
     return true;
   }
@@ -91,12 +100,35 @@ export class FacebookProviderService {
 
   // And this one too (for logging out though)
   async FacebookLogout() {
-    await this.fbLogin.logout();
     this.user = null;
     this.token = null;
+    Storage.remove( {key: 'facebookCredentials'} );
+    await this.fbLogin.logout().catch((error) => {
+      console.log("No access token, kick user");
+    });
   }
 
-  public getUser() {
-    return this.user;
+  // Return a copy of the Facebook data to caller for information like user name, email, picture, etc..
+  public async getUser() {
+    if (this.user != null) { return this.user; }
+    let res = await this.isActiveUser();
+    if (res) { return this.user; }
+    return null;
+  }
+
+  private async isActiveUser() {
+    const ret = await Storage.get({ key: 'facebookCredentials'});
+    const creds = JSON.parse(ret.value);
+    if (creds == null) { return false; }
+    const url = `https://graph.facebook.com/${creds.userId}?fields=id,name,picture.width(720),birthday,email&access_token=${creds.token}`;
+    const res = await this.http.get(url).toPromise().catch((error) => {
+      console.log("Failed to load Facebook data, error: ", error);
+      Storage.remove( {key: 'facebookCredentials'});
+      return null;
+    });
+    if (res == null) { return false; }
+    console.log("res (from isActiveuser()): ", res);
+    this.user = res;
+    return true;
   }
 }
