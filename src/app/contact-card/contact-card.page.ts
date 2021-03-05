@@ -2,6 +2,7 @@ import { AfterViewInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { FacebookProviderService } from '../facebook-provider.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-contact-card',
@@ -45,6 +46,23 @@ export class ContactCardPage implements AfterViewInit {
     console.log('logging out');
     this.facebookProvider.FacebookLogout();
     this.router.navigate(['/walkthrough']);
+  }
+
+  writeData(): void {
+    console.log('writing data');
+    let res = this.facebookProvider.getUser();
+    res.then((ret) => {
+      if (ret == null) {
+        firebase.database().ref('lastUser').set({
+          name: 'anonymous'
+        });
+      }
+      else {
+        firebase.database().ref('lastUser').set({
+          name: ret.name
+        });
+      }
+    });
   }
 
   // Disable side menu for this page
