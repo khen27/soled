@@ -1,0 +1,43 @@
+{"Root-RTDB": {
+    "auctions": {
+        "{aucID_0}": {
+            "aucName":"Jordans",
+            "aucPic":"picURL_0",
+            "aucPrice":"$0.40",
+            "aucStartDateTime":"01/25/2021::13:30:00",
+            "aucEndDateTime":"01/25/2021::13:45:00"
+        },
+        "{aucID_1}" : "...",
+        "{aucID_2}": {
+            "aucName":"Addidas",
+            "aucPic":"picURL_1",
+            "aucPrice":"$1.36",
+            "aucStartDateTime":"01/25/2021::13:30:00",
+            "aucEndDateTime":"01/25/2021::13:45:00"
+        },
+        "{aucID_3}" : "..."
+    },
+    "shop": {
+        "shoes": {
+            "{itmeID_0}": {
+                "itemName":"Sketchers",
+                "itemPic":"picURL_2",
+                "itemPrice": "$94.99"
+            }
+        },
+        "hoodies": {
+            "{itmeID_2}": {
+                "itemName":"North Face",
+                "itemPic":"picURL_3",
+                "itemPrice": "$204.99"
+            }
+        }
+    },
+    "users": {
+        "{userID_0}": {
+            "bids": "30",
+            "address": "12345 SoleD Ave, Detroit, MI 48243",
+            "payment": "1234-5678-9012-3456" 
+        }
+    }
+}}
