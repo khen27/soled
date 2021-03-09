@@ -13,13 +13,54 @@ import * as firebase from 'firebase';
   ]
 })
 export class ContactCardPage implements AfterViewInit {
-  user = null;
+  user: firebase.User = null;
+  myFirebaseAuthObserver: firebase.Unsubscribe = undefined;
   profilePicSrc: String;
 
   constructor(
     public router: Router,
     private facebookProvider: FacebookProviderService
   ) { }
+
+  // Disable side menu for this page
+  ionViewDidEnter(): void {
+    //this.menu.enable(false);
+  }
+
+  // Restore to default when leaving this page
+  ionViewDidLeave(): void {
+    //this.menu.enable(true);
+  }
+
+  ngAfterViewInit(): void {
+    this.facebookProvider.getUser()
+    .then((ret) => {
+      if (ret == null) {
+        firebase.auth().signOut()
+        .then(() => {
+          console.log("firebase logout success!");
+        })
+        .catch((error) => {
+          console.log("firebase logout error (", error.code, "): ", error.message);
+        });
+        this.router.navigate(['/walkthrough'])
+      }
+      else {
+        let userName = document.getElementById("ProfileName");
+        userName.innerHTML = `${ret.name}`;
+        this.profilePicSrc = ret.picture.data.url;
+        this.myFirebaseAuthObserver = firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+          }
+          else {
+            this.facebookProvider.facebookLogout();
+            this.router.navigate(['walkthrough']);
+            this.myFirebaseAuthObserver();
+          }
+        });
+      }
+    });
+  }
 
   // enable push notifications 
   pushNotificationsEnabled(ionicButton) {
@@ -44,7 +85,7 @@ export class ContactCardPage implements AfterViewInit {
 
   logout(): void {
     console.log('logging out');
-    this.facebookProvider.FacebookLogout();
+    this.facebookProvider.facebookLogout();
     this.router.navigate(['/walkthrough']);
   }
 
@@ -65,34 +106,4 @@ export class ContactCardPage implements AfterViewInit {
     });
   }
 
-  // Disable side menu for this page
-  ionViewDidEnter(): void {
-    //this.menu.enable(false);
-  }
-
-  // Restore to default when leaving this page
-  ionViewDidLeave(): void {
-    //this.menu.enable(true);
-  }
-
-  ngAfterViewInit(): void {
-    let res = this.facebookProvider.getUser();
-    res.then((ret) => {
-      let userName = document.getElementById("ProfileName");
-      //this.profilePicSrc = <HTMLImageElement>document.getElementById("ProfilePic");
-      if (ret == null) {
-        this.router.navigate(['/walkthrough']);
-        userName.innerHTML = "No User";
-        this.profilePicSrc = "./assets/sample-images/notifications/karl.jpg";
-      }
-      else {
-        userName.innerHTML = `${ret.name}`;
-        this.profilePicSrc = ret.picture.data.url;
-      }
-    });
-  }
 }
-
-
-
-

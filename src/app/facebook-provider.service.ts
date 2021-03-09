@@ -5,6 +5,7 @@ import { Plugins, registerWebPlugin } from '@capacitor/core';
 import { HttpClient } from '@angular/common/http';
 import { isPlatform } from '@ionic/angular';
 import { parse } from 'path';
+import * as firebase from 'firebase';
 registerWebPlugin(FacebookLogin);
 
 const { Storage } = Plugins;
@@ -17,6 +18,8 @@ export class FacebookProviderService {
   private fbLogin: FacebookLoginPlugin;
   private user = null;
   private token = null;
+  private firebaseUserCredential: firebase.auth.UserCredential = null;
+  private firebaseOAutCredential: firebase.auth.OAuthCredential = null;
 
   constructor(
     private http: HttpClient
@@ -35,7 +38,35 @@ export class FacebookProviderService {
     }
   }
 
-  async FacebookLogin() {
+  //Probably gonna erase this later
+  async facebookFireLogin() {
+    console.log("facebookFireLogin()")
+    var provider = new firebase.auth.FacebookAuthProvider();
+    provider.addScope('public_profile');
+    await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    return await firebase.auth().signInWithPopup(provider).then((result) => {
+      this.firebaseUserCredential = result;
+      this.user = result.user;
+      this.firebaseOAutCredential = result.credential;
+      this.token = this.firebaseOAutCredential.accessToken;
+      console.log(this.user);
+      
+      return true;
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's accoount used
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      console.log(`facebook-firebase login error: ${errorCode}, ${errorMessage}, ${email}, ${credential}`);
+      return false;
+    });
+  }
+
+  async facebookLogin() {
     console.log("Test 1: FacebookLogin() Starting");
     const FACEBOOK_PERMISSIONS = ['email', 'user_birthday'];
     const result = await this.fbLogin.login({ permissions: FACEBOOK_PERMISSIONS });
@@ -54,6 +85,28 @@ export class FacebookProviderService {
       // Login failed
       return false;
     }
+    var cred = firebase.auth.FacebookAuthProvider.credential(result.accessToken.token);
+    await firebase.auth().signInWithCredential(cred).then((res) => {
+      this.firebaseUserCredential = res;
+      //this.user = res.user;
+      this.firebaseOAutCredential = res.credential;
+      //this.token = this.firebaseOAutCredential.accessToken;
+      console.log(this.user);
+      
+      return true;
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      // The email of the user's accoount used
+      var email = error.email;
+      // The firebase.auth.AuthCredential type that was used.
+      var credential = error.credential;
+      console.log(`facebook-firebase login error: ${errorCode}, ${errorMessage}, ${email}, ${credential}`);
+      return false;
+    });
+
     console.log("Test 9: Completing login. I don't believe Test 8 will have run yet, so user below is still undefined huh?");
     console.log('facebook signup, user: ', this.user);
     Storage.set({
@@ -91,13 +144,24 @@ export class FacebookProviderService {
     this.user = res;
   }
 
-  async FacebookLogout() {
+  async facebookLogout() {
+    if (this.user == null) {return;}
     this.user = null;
     this.token = null;
     Storage.remove( {key: 'facebookCredentials'} );
+    let res = await this.fbLogin.getCurrentAccessToken();
+    //if (res.accessToken) {
     await this.fbLogin.logout().catch((error) => {
       console.log("No access token, kick user");
     });
+    //}
+    await firebase.auth().signOut()
+          .then(() => {
+            console.log("firebase logout success!");
+          })
+          .catch((error) => {
+            console.log("firebase logout error (", error.code, "): ", error.message);
+          });
   }
 
   // Return a copy of the Facebook data to caller for information like user name, email, picture, etc..

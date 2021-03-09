@@ -3,7 +3,7 @@
     <ion-item lines="none" slot="start">
       <ion-avatar slot="start" (click)="launchProfilePage()">
         <!-- <img id="ProfilePic" src="https://habib.al-mawali.com/wp-content/uploads/IMG_4838-1-768x768.jpg"> -->
-        <img id="ProfilePic" src="">
+        <img id="ProfilePic" src="{{profilePicSrc}}">
       </ion-avatar>
         <ion-label class="greeting">
           <p id="UserGreeting">Hey Karl,</p>
@@ -36,17 +36,17 @@
 					<ion-card-header>
 						<ion-toolbar>
               <ion-buttons class="icon-shape" slot="start">
-                <ion-button color="favorite">
+                <ion-button color="favorite" (click)="launchShareSystem()">
                   <ion-icon  slot="icon-only" name="share-outline" ></ion-icon>
                 </ion-button>
               </ion-buttons>
               <ion-buttons class="icon-shape" slot="end">
-                <ion-button fill="clear" color="dark">
+                <ion-button fill="clear" color="dark" (click)="launchAuctionPage()">
                   <ion-icon name="time-outline" ></ion-icon>
                 </ion-button>
               </ion-buttons>
             </ion-toolbar>
-							<img class='files' src="./assets/sample-images/categories/pink-nike.jpg">
+							<img class='files' src="{{item.value.aucPic}}">
 					</ion-card-header>
 							<ion-card-content class="ion-text-left">
 								<ion-card-title class=" ion-text-center">{{item.value.aucName}}</ion-card-title>
@@ -102,7 +102,7 @@
 			<ion-slide *ngFor="let item of pastAucs | keyvalue">
 				<ion-card>
 					<ion-card-header>
-						<img class='files' src="./assets/sample-images/categories/Jordan_1_High_Dark_Mocha.png">
+						<img class='files' src="{{item.value.aucPic}}">
 					</ion-card-header>
             <ion-card-content class="ion-text-left">
               <ion-card-title class="ion-text-center">{{item.value.aucName}}</ion-card-title>

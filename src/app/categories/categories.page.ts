@@ -20,7 +20,8 @@ import * as firebase from 'firebase';
 })
 export class CategoriesPage implements AfterViewInit {
   user = null;
-  profilePic: HTMLImageElement;
+  myFirebaseAuthObserver: firebase.Unsubscribe = undefined;
+  profilePicSrc: string;
   clickHandled: Boolean = false;
   auctionsRef : firebase.database.Reference = null;
   liveAucs = {};
@@ -35,6 +36,98 @@ export class CategoriesPage implements AfterViewInit {
     slidesPerView: 1.5
   };
 
+  // Disable side menu for this page
+  ionViewDidEnter(): void {
+    //this.menu.enable(false);
+  }
+
+  // Restore to default when leaving this page
+  ionViewDidLeave(): void {
+    //this.menu.enable(true);
+  }
+
+  ngAfterViewInit(): void {
+    console.log("Im here1");
+    this.facebookProvider.getUser().then((ret) => {
+      if (ret == null) {
+        firebase.auth().signOut()
+        .then(() => {
+          console.log("firebase logout success!");
+        })
+        .catch((error) => {
+          console.log("firebase logout error (", error.code, "): ", error.message);
+        });
+        this.router.navigate(['walkthrough']);
+      }
+      else {
+        let userGreeting = document.getElementById("UserGreeting");
+        //this.profilePic = <HTMLImageElement>document.getElementById("ProfilePic");
+    
+        userGreeting.innerHTML = `Hey ${ret.name},`;
+        console.log("Im here: ",ret);
+        this.profilePicSrc = ret.picture.data.url;
+        //this.profilePic.src = ret.picture.data.url;
+        this.myFirebaseAuthObserver = firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            this.auctionsRef = firebase.database().ref('auctions');
+            this.auctionsRef.on('child_added', (data) => {
+              this.addAuction(data);
+            });
+            this.auctionsRef.on('child_changed', (data) => {
+              this.setAuction(data);
+            });
+            this.auctionsRef.on('child_removed', (data) => {
+              this.deleteAuction(data);
+            });
+          }
+          else {
+            this.facebookProvider.facebookLogout();
+            this.router.navigate(['walkthrough']);
+            this.myFirebaseAuthObserver();
+          }
+        });
+      }
+    });
+  }
+
+  addAuction(data: firebase.database.DataSnapshot): void {
+    var myValue = data.val();
+    var imageRef = firebase.storage().ref(myValue.aucPic);
+    imageRef.getDownloadURL().then((url) => {
+      console.log(url);
+      myValue.aucPic = url;
+      if (myValue.aucEnd < 1922) {
+        this.pastAucs[data.key] = myValue;
+      }
+      else {
+        this.liveAucs[data.key] = myValue;
+      }
+    });
+  }
+
+  setAuction(data: firebase.database.DataSnapshot): void{
+    var myValue = data.val();
+    var imageRef = firebase.storage().ref(myValue.aucPic);
+    imageRef.getDownloadURL().then((url) => {
+      console.log(url);
+      myValue.aucPic = url;
+      if (myValue.aucEnd < 1922) {
+        this.pastAucs[data.key] = myValue;
+      }
+      else {
+        this.liveAucs[data.key] = myValue;
+      }
+    });
+  }
+
+  deleteAuction(data: firebase.database.DataSnapshot): void{
+    if (data.val().aucEnd < 1922) {
+      this.pastAucs[data.key] = null;
+    }
+    else {
+      this.liveAucs[data.key] = null;
+    }
+  }
   launchProfilePage(): void {
     console.log('launch profile page');
     this.router.navigate(['app/contact-card']);
@@ -76,74 +169,6 @@ export class CategoriesPage implements AfterViewInit {
     resolve();
     this.clickHandled = true;
     setTimeout(() => { console.log("reset the click trigger"); this.clickHandled = false; }, 0);
-  }
-
-  // Disable side menu for this page
-  ionViewDidEnter(): void {
-    //this.menu.enable(false);
-  }
-
-  // Restore to default when leaving this page
-  ionViewDidLeave(): void {
-    //this.menu.enable(true);
-  }
-
-  ngAfterViewInit(): void {
-    let res = this.facebookProvider.getUser();
-    res.then((ret) => {
-      let userGreeting = document.getElementById("UserGreeting");
-      this.profilePic = <HTMLImageElement>document.getElementById("ProfilePic");
-      if (ret == null) {
-        userGreeting.innerHTML = "Hi, no one is online. This screen shouldn't be viewable.";
-        this.profilePic.src = "https://habib.al-mawali.com/wp-content/uploads/IMG_4838-1-768x768.jpg";
-        this.router.navigate(['walkthrough']);
-        return false;
-      }
-      else {
-        userGreeting.innerHTML = `Hey ${ret.name},`;
-        this.profilePic.src = ret.picture.data.url;
-        return true;
-      }
-    }).then((success) => {
-      if (!success) {return;}
-      this.auctionsRef = firebase.database().ref('auctions');
-      this.auctionsRef.on('child_added', (data) => {
-        this.addAuction(data);
-      });
-      this.auctionsRef.on('child_changed', (data) => {
-        this.setAuction(data);
-      });
-      this.auctionsRef.on('child_removed', (data) => {
-        this.deleteAuction(data);
-      });
-    });
-  }
-  
-  addAuction(data: firebase.database.DataSnapshot): void {
-    if (data.val().aucEnd < 1922) {
-      this.pastAucs[data.key] = data.val();
-    }
-    else {
-      this.liveAucs[data.key] = data.val();
-    }
-  }
-
-  setAuction(data: firebase.database.DataSnapshot): void{
-    if (data.val().aucEnd < 1922) {
-      this.pastAucs[data.key] = data.val();
-    }
-    else {
-      this.liveAucs[data.key] = data.val();
-    }
-  }
-
-  deleteAuction(data: firebase.database.DataSnapshot): void{
-    if (data.val().aucEnd < 1922) {
-      this.pastAucs[data.key] = null;
-    }
-    else {
-      this.liveAucs[data.key] = null;
-    }
   }
 
   writeData(): void {
