@@ -2,7 +2,7 @@
 
 // Custom variables
 // Note:  These ones were added by us and have nothing to do with Ionic CSS Custom Properties
-:host {
+/*:host {
   --page-margin: var(--app-narrow-margin);
 
   --page-categories-gutter: calc(var(--page-margin) / 4);
@@ -12,11 +12,10 @@
 }
 
 // Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
-.categories-list {
+.categories-list  {
   --ion-grid-column-padding: var(--page-categories-gutter);
 
   padding: calc(var(--page-categories-gutter) * 3);
-  height: 100%;
   align-content: flex-start;
   overflow: scroll;
 
@@ -24,7 +23,6 @@
 
   .category-item {
     .category-anchor {
-      height: 100%;
       text-decoration: none;
       display: flex;
       justify-content: flex-start;
@@ -68,39 +66,31 @@
     --page-category-background: #d9453a;
     --page-category-background-rgb: 217,69,58;
   }
-}
+}*/
 
 
 ion-header {
-  ion-toolbar,
-  ion-item {
+  ion-toolbar, ion-item {
     --background: #f1f5f8;
     background: #f1f5f8;
     padding: 0 10px;
   }
-
-  ion-header {
-    .bordered {
-      --border-radius: 10px;
-      --box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
-    }
+  
+  .bordered {
+    --border-radius: 10px;
+    --box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
   }
-
+  
   ion-item {
     h3 {
       font-weight: 700;
-      font-size: 14px;
+      font-size: 60%;
       color: black;
     }
 
     p {
       font-weight: 500;
-      font-size: 14px;
-    }
-
-    h2 {
-      font-weight: 700;
-      font-size: 16px;
+      font-size: 75%;
     }
 
     ion-avatar {
@@ -127,27 +117,22 @@ ion-content {
     padding: 4px 10px 20px 10px;
     border-radius: 0 0 28px 28px;
 
-    ion-card {
-      height: 525px;
-    }
-
-    img {
-      height: 350px;
-      width: 500px;
-    }
-
     ion-item {
       --background: none;
       background: none;
       padding: 0 10px;
 
-      h2 {
+      h3 {
         font-weight: 700;
-        font-size: 16px;
-      }
-      
-      
+        font-size: 50%;
+      } 
     }
+
+    ion-card{
+      height: 45%;
+      width: 100%;
+    }
+
     ion-progress-bar{
       color:inear-gradient(
         90deg,
@@ -162,6 +147,7 @@ ion-content {
       --box-shadow: 5px 5px 10px #d1d1d1, -5px -5px 10px #ffffff;
     }
   }
+  
   .slides2 {
     background:linear-gradient(
       90deg,
@@ -172,15 +158,6 @@ ion-content {
     //padding: 6px 6px 0px 0px;
     padding: 4px 10px 20px 10px;
     border-radius: 0 0 28px 28px;
-
-    ion-card {
-      height: 445px;
-    }
-
-    img {
-      height: 350px;
-      width: 500px;
-    }
 
     ion-item {
      // --background: #3670e5;
@@ -195,32 +172,12 @@ ion-content {
       }
     }
   }
+
   ion-card {
-    width: 100%;
     box-shadow: 0px;
     border-radius: 14px;
     padding: 4px;
     background: rgba(255, 255, 255, 1);
-    // images for slides
-    .main {
-      width: 60px;
-      height: 60px;
-      border-radius: 50px;
-      box-shadow: 7px 7px 20px #dbdfe2, -7px -7px 20px #ffffff;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      img {
-        width: 30px;
-      }
-      ion-button{
-        background:favorite;
-      }
-    }
-    .files {
-      padding-top: 14px;
-    }
 
     ion-toolbar{
       padding: 0;
@@ -231,13 +188,10 @@ ion-content {
         color: black;
       }
 
-
       .auction-data{
         ion-label{
           background:none;
-        }
-        
-
+        }        
       }
     }
   }
@@ -246,7 +200,7 @@ ion-content {
     color: black;
   }
 
-  .container {
+  /*.container {
     padding: 6px 20px;
     color: #ffffff;
 
@@ -274,7 +228,7 @@ ion-content {
     h2 {
       padding-bottom: 8px;
     }
-  }
+  }*/
 }
 
 

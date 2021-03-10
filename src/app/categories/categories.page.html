@@ -7,7 +7,7 @@
       </ion-avatar>
         <ion-label class="greeting">
           <p id="UserGreeting">Hey Karl,</p>
-          <h3>Buy some more bids!</h3>
+          <h3>Buy more bids!</h3>
         </ion-label>
     </ion-item>
     <ion-buttons slot="end">
@@ -32,7 +32,7 @@
   <div class="slides ion-margin-bottom">
     <ion-slides [options]="slideOptions">
 			<ion-slide *ngFor="let item of liveAucs | keyvalue">
-				<ion-card (click)="launchFashionDetailsPage()">
+				<ion-card (click)="launchFashionDetailsPage()" class="live-auctions">
 					<ion-card-header>
 						<ion-toolbar>
               <ion-buttons class="icon-shape" slot="start">
