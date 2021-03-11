@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { IResolvedRouteData, ResolverHelper } from '../../utils/resolver-helper';
@@ -24,7 +24,10 @@ export class FashionListingPage implements OnInit {
     return (this.listing && this.listing.isShell) ? true : false;
   }
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+    ) { }
 
   slideOptions = {
     slidesPerView: 2.3
@@ -59,6 +62,11 @@ export class FashionListingPage implements OnInit {
 
   launchFashionDetailsPage(): void {
     console.log('launch fashion details page (not implemented yet)');
+  }
+
+  returnHome(): void {
+    console.log('go back to landing page');
+    this.router.navigate(['/app/categories']);
   }
 
 }

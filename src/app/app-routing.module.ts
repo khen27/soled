@@ -78,15 +78,40 @@ const routes: Routes = [
     loadChildren: () => import('./video-playlist/video-playlist.module').then(m => m.VideoPlaylistPageModule)
   },
   {
-    path: '**',
-    redirectTo: 'page-not-found'
-  },
-  {
     path: 'tab4',
     loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
-  },  {
+  },
+  {
     path: 'raffle',
     loadChildren: () => import('./raffle/raffle.module').then( m => m.RafflePageModule)
+  },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./about-us/about-us.module').then( m => m.AboutUsPageModule)
+  },
+  {
+    path: 'auction',
+    loadChildren: () => import('./auction/auction.module').then( m => m.AuctionPageModule)
+  },
+  {
+    path: 'buy-bids',
+    loadChildren: () => import('./buy-bids/buy-bids.module').then( m => m.BuyBidsPageModule)
+  },
+  {
+    path: 'purchase-history',
+    loadChildren: () => import('./purchase-history/purchase-history.module').then( m => m.PurchaseHistoryPageModule)
+  },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
+  },
+  {
+    path: 'admin-portal',
+    loadChildren: () => import('./admin-portal/admin-portal.module').then( m => m.AdminPortalPageModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'page-not-found'
   }
 
 ];

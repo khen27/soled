@@ -149,7 +149,7 @@ export class FacebookProviderService {
     this.user = null;
     this.token = null;
     Storage.remove( {key: 'facebookCredentials'} );
-    let res = await this.fbLogin.getCurrentAccessToken();
+    //let res = await this.fbLogin.getCurrentAccessToken();
     //if (res.accessToken) {
     await this.fbLogin.logout().catch((error) => {
       console.log("No access token, kick user");
