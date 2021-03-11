@@ -139,11 +139,13 @@ export class CategoriesPage implements AfterViewInit {
   }
 
   launchRafflePage(): void {
-    console.log('launch raffle page (not implemented yet)');
+    console.log('launch raffle page');
+    this.router.navigate(['/raffle']);
   }
 
   launchCartPage(): void {
-    console.log('launch cart page (not implemented yet)');
+    console.log('launch cart page');
+    this.router.navigate(['/cart']);
   }
 
   launchFashionDetailsPage(): void {
@@ -160,7 +162,8 @@ export class CategoriesPage implements AfterViewInit {
 
   launchAuctionPage(): void {
     this.propagationHandler(() => {
-      console.log('launch auction page (not implemented yet)');
+      console.log('launch auction page');
+      this.router.navigate(['/auction']);
     });
   }
 

@@ -80,7 +80,18 @@ export class ContactCardPage implements AfterViewInit {
   }
 
   launchAboutUsPage(): void {
+    console.log('launch about us page')
+    this.router.navigate(['/about-us']);
+  }
+
+  launchBuyBidsPage(): void {
     console.log('launch about us page (not implemented yet)')
+    this.router.navigate(['/buy-bids']);
+  }
+
+  launchPurchaseHistoryPage(): void {
+    console.log('launch about us page (not implemented yet)')
+    this.router.navigate(['/purchase-history']);
   }
 
   logout(): void {
